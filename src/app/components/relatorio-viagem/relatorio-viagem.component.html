@@ -1,0 +1,14 @@
+<section class="container">  
+    <div class="row text-center">
+        <div class="wrapper">
+            <div *ngFor="let viagem of viagens" class="card" style="width: 18rem;">
+                <img class="card-img-top" [routerLink]="['/viagem', viagem.id]"src="https://ichef.bbci.co.uk/news/976/cpsprodpb/149B2/production/_118320448_ebctwo.jpg" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title">{{viagem.nome}}</h5>
+                <p class="card-text">{{viagem.descricao}}</p>
+                <a class="btn btn-primary" [routerLink]="['/viagem', viagem.id]">Editar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,12 @@
+/* .card{
+    grid-template-columns: repeat(1, 3fr);
+    grid-auto-rows: 200px;
+    grid-column-gap: 5em;
+}
+ */
+.wrapper{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);    
+    grid-column-gap: 2em;    
+  }
