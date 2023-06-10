@@ -10,7 +10,7 @@
             <a class="nav-link active" aria-current="page" [routerLink]="['/home']">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/relatorio']">Relatório de Viagens</a>
+            <a class="nav-link" [routerLink]="['/viagens']">Relatório de Viagens</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" 
@@ -22,7 +22,7 @@
               Cadastros
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Pessoas</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/pessoa']" href="#">Pessoas</a></li>
             </ul>
           </li>
 <!--           <li class="nav-item">

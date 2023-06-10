@@ -13,27 +13,14 @@ import { ViagemService } from './components/viagem/viagem.service';
 import { CustomFormsModule } from 'ng2-validation'
 import { AppRoutingModule } from './app-routing.module';
 import { ViagemModule } from './components/viagem.module';
+/* import { TableModule } from "primeng/table"; */
+import { PessoaModule } from './components/pessoa/pessoa.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    MenuComponent,
-    FooterComponent    
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    ViagemModule,
-    CustomFormsModule,
-    AppRoutingModule
-  ],
-
-  providers: [
-    ViagemService,
-    {provide: APP_BASE_HREF, useValue: '/'}],
+  declarations: [AppComponent,HomeComponent,MenuComponent,FooterComponent],
+  imports: [BrowserModule,FormsModule,HttpClientModule,ReactiveFormsModule,ViagemModule,CustomFormsModule,AppRoutingModule, PessoaModule],
+ /*  exports: [TableModule], */
+  providers: [ViagemService,{provide: APP_BASE_HREF, useValue: '/'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -21,13 +21,16 @@ export class ViagemComponent implements OnInit {
   viagem: ViagemDTO;
   formResult: string = '';
   MASKS = MASKS;
-  viagemId;  
-  
+  viagemId;    
+
+  // Com forma avançada de validação de formulário
+  validationMessages: ValidationMessages;
+  genericValidator: GenericValidator;
+  displayMessage: DisplayMessage = {};
+
+  alertPlaceholder: any;
 
   @Output() aoSalvar = new EventEmitter<any>();
-
-/*   nome: string = 'Nome Viagem';
-  descricao: string = 'Descrição Viagem'; */
 
   constructor(private formBuilder: FormBuilder, private viagemService: ViagemService, private route: ActivatedRoute) { 
     this.validationMessages = {
@@ -47,11 +50,6 @@ export class ViagemComponent implements OnInit {
     this.genericValidator = new GenericValidator(this.validationMessages);
     this.route.params.subscribe(params => this.viagemId = params['id']);
   }
-
-// Com forma avançada de validação de formulário
-  validationMessages: ValidationMessages;
-  genericValidator: GenericValidator;
-  displayMessage: DisplayMessage = {};
 
   ngOnInit() {
     this.formGroupCadastro = this.formBuilder.group({
@@ -83,6 +81,8 @@ export class ViagemComponent implements OnInit {
     merge(...controlBlurs).subscribe(() => {
       this.displayMessage = this.genericValidator.processarMensagens(this.formGroupCadastro) // três pontinhos se chama spread significa espalhar, ou seja, este operador é usado para 'espalhar' os elementos de um array quando interpretado em tempo de execução. Ou seja, vai executar aquilo para todos os itens da coleção.
     }) 
+
+    this.alertPlaceholder = document.getElementById('liveAlertPlaceholder');
   }
 
 // Com forma fácil de validação
@@ -105,16 +105,29 @@ export class ViagemComponent implements OnInit {
       .subscribe(
         viagemRetorno => {
           this.viagem = viagemRetorno;
+          this.appendAlert('Viagem salva com sucesso!', 'success');
         },
         error => console.log(error)
       );
 
     } else {
-      this.formResult = "Não Salvou!"
+      this.appendAlert('Formulário inválido. Revise as informações!', 'danger');
     }
     //const valorEmitir = {nome: this.nome, descricao: this.descricao};
     //this.aoSalvar.emit(valorEmitir);
 
+  }
+
+  appendAlert = (message, type) => {
+    const wrapper = document.createElement('div')
+    wrapper.innerHTML = [
+      `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+      `   <div>${message}</div>`,
+      '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+      '</div>'
+    ].join('');
+
+    this.alertPlaceholder.append(wrapper);
   }
 
 }
