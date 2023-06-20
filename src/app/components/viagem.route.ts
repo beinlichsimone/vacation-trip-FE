@@ -6,7 +6,7 @@ import { ViagemComponent } from "./viagem/viagem.component";
 const viagemRouterConfig: Routes = [
     { path: '', redirectTo: '/relatorio', pathMatch: 'full'}, 
     { path: 'relatorio', component: RelatorioViagemComponent},     
-    { path: 'viagem/:id', component: ViagemComponent}
+    { path: 'viagem/:id', component: ViagemComponent},
 ]
 
 @NgModule({

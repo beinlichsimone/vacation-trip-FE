@@ -3,10 +3,8 @@
 
   <h2 class="formulario__titulo">Viagem</h2>
   <div class= wrapper>
-<!-- Forma avançada de validação de formulário -->
   <div class="form-group">
     <label class="form-field__label" for="nome">Nome: </label>
-    <!-- <div class="col-md-10">  -->
       <input class="form-control" 
       id="nome" 
       type="text" 
@@ -18,7 +16,6 @@
       <span class="text-danger" *ngIf="displayMessage.nome">
         <p [innerHTML]="displayMessage.nome"></p>
       </span> 
-   <!--  </div> -->
   </div>
 
   <div class="form-group">
@@ -35,70 +32,7 @@
     <label class="form-field__label" for="dataVolta">Data Volta: </label>
     <input class="form-control" [ngModel]="viagem?.dataVolta" id="dataVolta" type="date" formControlName="dataVolta">
   </div>  
-
-  <div class="form-group">
-    <label class="form-field__label" for="email">Email: </label>
-    <input class="form-control" id="email" type="text" formControlName="email">
-  </div>
-
-  <div class="form-group">
-    <label class="form-field__label" for="cpf">CPF: </label>
-    <input class="form-control" id="cpf" type="text" formControlName="cpf" cpf [textMask]="{mask: MASKS.cpf.textMask}"      
-    [ngClass]="{'is-invalid': displayMessage.cpf}"/>
-
-    <span class="text-danger" *ngIf="displayMessage.cpf">
-      <p [innerHTML]="displayMessage.cpf"></p>
-    </span> 
-  </div>
-<!-- 
-  <div class="form-group">
-    <label class="form-field__label" for="senha">Senha: </label>
-    <input class="form-control" id="senha" type="password" formControlName="senha"       
-    [ngClass]="{'is-invalid': displayMessage.senha}"/>
-    <span class="text-danger" *ngIf="displayMessage.senha">
-      <p [innerHTML]="displayMessage.senha"></p>
-    </span> 
-  </div>   -->
 </div>
-
-  <!-- Com forma fácil de validação -->
-<!--   <div class="form-group">
-    <label class="form-field__label" for="nome">Nome: </label>
-    <div class="col-md-10"> 
-      <input class="form-control" id="nome" type="text" placeholder="Nome (requerido)" formControlName="nome"
-      [ngClass]="{'is-invalid': formGroupCadastro.get('nome').errors && (formGroupCadastro.get('nome').dirty || formGroupCadastro.get('nome').touched)}"
-      />      
-      <span class="text-danger" *ngIf="formGroupCadastro.get('nome').errors && (formGroupCadastro.get('nome').dirty || formGroupCadastro.get('nome').touched)">
-        <p>Preencha o campo Nome.</p>
-      </span>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="form-field__label" for="descricao">Descrição: </label>
-    <input class="form-control" id="descricao" type="text" formControlName="descricao">
-  </div>
-
-  <div class="form-group">
-    <label class="form-field__label" for="email">Email: </label>
-    <input class="form-control" id="email" type="text" formControlName="email">
-  </div>
-
-  <div class="form-group">
-    <label class="form-field__label" for="cpf">CPF: </label>
-    <input class="form-control" id="cpf" type="text" formControlName="cpf" cpf [textMask]="{mask: MASKS.cpf.textMask}">
-    <span class="text-danger" *ngIf="formGroupCadastro.get('cpf').errors && (formGroupCadastro.get('cpf').dirty || formGroupCadastro.get('cpf').touched)">
-      <p>CPF Inválido!</p>
-    </span> 
-  </div>
-
-  <div class="form-group">
-    <label class="form-field__label" for="senha">Senha: </label>
-    <input class="form-control" id="senha" type="password" placeholder="Senha (requerido)" formControlName="senha" > 
-    <span class="text-danger" *ngIf="formGroupCadastro.get('senha').errors && (formGroupCadastro.get('senha').dirty || formGroupCadastro.get('senha').touched)">
-      <p>Tamanho Inválido!</p>
-    </span> 
-  </div>   -->
 
   <div class="botao-wrapper">
     <button id="save-button" 

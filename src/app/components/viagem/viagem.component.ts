@@ -37,14 +37,7 @@ export class ViagemComponent implements OnInit {
       nome: {
         required: 'O nome é obrigatório'
       },
-      cpf: {
-        required: 'O CPF é obrigatório',
-        cpf: 'CPF em formato inválido'
-      },
-      senha: {
-        required: 'A senha é obrigatória',
-        rangeLength: 'A senha deve possuir entre 6 e 9 caracteres'
-      }
+
     };
 
     this.genericValidator = new GenericValidator(this.validationMessages);
@@ -56,10 +49,7 @@ export class ViagemComponent implements OnInit {
       nome: ['', Validators.required],
       descricao: [''],
       dataIda: [''],
-      dataVolta: [''],
-      cpf: ['', [Validators.required, NgBrazilValidators.cpf]], // só para testar o validator
-      email: ['', Validators.email], // só para testar o validator
-      //senha: ['', [CustomValidators.rangeLength([6, 9]), Validators.required]]
+      dataVolta: [''],     
     });
     
 
@@ -70,8 +60,6 @@ export class ViagemComponent implements OnInit {
       },
       error => console.log(error)
     );
-
-    console.log(this.viagem);
   }
 
   ngAfterViewInit(): void { // interface chamada logo após a página ter sido carregada no browser
@@ -84,17 +72,6 @@ export class ViagemComponent implements OnInit {
 
     this.alertPlaceholder = document.getElementById('liveAlertPlaceholder');
   }
-
-// Com forma fácil de validação
-/*   ngOnInit() {
-    this.formGroupCadastro = this.formBuilder.group({
-      nome: ['', Validators.required],
-      descricao: [''],
-      cpf: ['', [Validators.required, NgBrazilValidators.cpf]], // só para testar o validator
-      email: ['', Validators.email], // só para testar o validator
-      senha: ['', CustomValidators.rangeLength([6, 9])]
-    });
-  } */
 
   salvar(){
     if(this.formGroupCadastro.dirty && this.formGroupCadastro.valid){
@@ -113,8 +90,6 @@ export class ViagemComponent implements OnInit {
     } else {
       this.appendAlert('Formulário inválido. Revise as informações!', 'danger');
     }
-    //const valorEmitir = {nome: this.nome, descricao: this.descricao};
-    //this.aoSalvar.emit(valorEmitir);
 
   }
 
